@@ -1,0 +1,26 @@
+.btn-criar {
+  background: darkred;
+  color: white;
+}
+
+.modalCriar {
+  max-width: 100%;
+}
+
+.modal-lg {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 993px) {
+  .modal-lg {
+    max-width: 800px;
+  }
+}
+
+
+@media screen and (max-width: 860px) {
+  .modal-lg {
+    max-width: 500px;
+  }
+}

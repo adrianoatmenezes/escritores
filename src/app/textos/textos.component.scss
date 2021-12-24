@@ -1,0 +1,46 @@
+.card-escritor {
+  background: #f5f5f5;
+  border-radius: 5px;
+  border: 1px solid #c1c1;
+  padding: 20px 40px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 40px 0;
+  width: 80%;
+  box-shadow: 0 0 15px #c0c0c0;
+
+  .card-cabecalho {
+    border-bottom: 1px solid #c1c1;
+    margin-bottom: 10px;
+
+    .titulo-escritor {
+      margin: 0 0 10px;
+      line-height: 1;
+      font-size: 1.3rem;
+    }
+  }
+
+  .data-postado {
+    text-align: end;
+    padding: 10px 0 0;
+    margin: 0%;
+  }
+
+  .card-escritor-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #c1c1;
+    align-items: center;
+  }
+
+  .autor {
+    font-style: italic;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .card-escritor {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,84 @@
+<div class="criar-texto text-end mt-5">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#criarModal"
+    (click)="carregarDados()">
+    Criar
+  </button>
+</div>
+
+<!-- Modal criar -->
+
+<div class="modal modal-lg fade" id="criarModal" tabindex="-1" aria-labelledby="criarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modalCriar">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="criarModalLabel">Criar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form (ngSubmit)="criarTexto()" #formCriar="ngForm">
+        <div class="modal-body">
+          <div class="row">
+            <div class="mb-3 col-md-12">
+              <label for="tituloFormControlInput" class="form-label">Titulo</label>
+              <input type="text" class="form-control" id="tituloFormControlInput" placeholder="Digite o titulo"
+                name='titulo' [(ngModel)]="titulo" #campoTitulo="ngModel" required>
+              <cp-mensagem *ngIf="!campoTitulo.value && campoTitulo.invalid && campoTitulo.touched"
+                mensagem="* Titulo obrigatório">
+              </cp-mensagem>
+            </div>
+            <div class="mb-3 col-md-12">
+              <label for="textoFormControlTextarea" class="form-label">Texto</label>
+              <textarea class="form-control" id="textoFormControlTextarea" rows="3" name="texto" [(ngModel)]="texto"
+                #campoTexto="ngModel" required></textarea>
+              <cp-mensagem *ngIf="campoTexto.invalid && campoTexto.touched" mensagem="* Texto obrigatório">
+              </cp-mensagem>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="exampleDataList" class="form-label">Escolha o tipo da sua obra</label>
+              <select class="form-select" aria-label="Default select example" name="escolha-tipo" [(ngModel)]="tipo">
+                <option value="Texto" selected>Texto</option>
+                <option value="Poesia">Poesia</option>
+              </select>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="autorFormControlInput" class="form-label">Autor</label>
+              <input type="text" class="form-control" id="autorFormControlInput" placeholder="Nome do autor"
+                name="autor" [(ngModel)]="autor" #campoAutor="ngModel" required>
+              <cp-mensagem *ngIf="campoAutor.invalid && campoAutor.touched" mensagem="* Autor obrigatório">
+              </cp-mensagem>
+            </div>
+            <div class="text-end">
+              <button type="button" class="btn btn-danger mt-3 mb-3 me-3" data-bs-toggle="modal"
+                data-bs-target="#apagarModal" [disabled]="formCriar.invalid">Apagar historico</button>
+              <button type="button" class="btn btn-success mt-3 mb-3" (click)="salvarDados()"
+                [disabled]="formCriar.invalid">Salvar alterações</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-criar" [disabled]="formCriar.invalid"
+            (click)="limparDados()" onclick="limparEmoji(campoTexto)">Criar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal deletar -->
+<div class="modal fade" id="apagarModal" tabindex="-1" aria-labelledby="apagarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Você deseja <strong>mesmo</strong> remover o seu historico?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-danger" (click)="limparDados()" data-bs-toggle="modal"
+          data-bs-target="#criarModal">Remover</button>
+      </div>
+    </div>
+  </div>
+</div>

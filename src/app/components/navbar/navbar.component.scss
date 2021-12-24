@@ -1,0 +1,39 @@
+.navbar-site {
+  background: #111;
+  padding: 20px;
+}
+
+.texto-menu {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.itens {
+  margin-left: 50px;
+}
+
+.itens {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: .3s;
+  text-align: center;
+}
+
+.itens:hover {
+    color: #1cd4e9;
+}
+
+.itens.active {
+    color: #1cd4e9;
+}
+
+@media screen and (max-width: 991px) {
+  .navbar-nav {
+    margin-top: 20px;
+  }
+}
