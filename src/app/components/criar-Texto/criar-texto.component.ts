@@ -54,7 +54,7 @@ export class CriarTextoComponent implements OnInit {
         )
         .subscribe(
           (resultado) => {
-            this.router.navigate(['#']);
+            this.router.navigate(['home']);
           },
           (err) =>
             alert(
