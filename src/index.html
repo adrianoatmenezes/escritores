@@ -11,6 +11,29 @@
 
 <body>
   <es-root></es-root>
+
+  <script>
+
+    window.addEventListener('keydown', (ev) => {
+      switch (true) {
+        /* Previne F12 */
+        case ev.keyCode === 123:
+
+        /* Previne Ctrl + Shift +  */
+        case ev.ctrlKey && ev.shiftKey && ev.keyCode == 74:
+
+        /* Previne Ctrl + U */
+        case ev.ctrlKey && ev.keyCode == 85:
+          ev.preventDefault();
+      }
+    });
+
+    /* Previne clique direito do mouse */
+    window.addEventListener('contextmenu', (ev) => {
+      ev.preventDefault();
+    });
+
+  </script>
 </body>
 
 </html>

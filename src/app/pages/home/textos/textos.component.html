@@ -1,0 +1,20 @@
+<div class="grid mt-5" *ngIf="escritores.length > 0; else nenhumTexto">
+  <div class="card-escritor" *ngFor="let escritor of escritores">
+    <div class="card-cabecalho">
+      <h2 class="titulo-escritor text-center">{{escritor.titulo}}</h2>
+    </div>
+    <div class="card-texto">
+      <p class="text-secondary texto-escritor">
+        {{escritor.texto}}<a routerLink="../editar-texto/" (click)="salvaId(escritor.id)">Ver mais</a>
+      </p>
+      <div class="card-escritor-footer text-secondary">
+        <span class="autor">- {{escritor.autor}}</span>
+        <p class="data-postado"><span class="data-texto">Data da postagem: </span>{{escritor.dataPostado}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #nenhumTexto>
+  <p class="text-center mt-5" style="border: 0;">Nenhum texto/poesia foram encontrados</p>
+</ng-template>

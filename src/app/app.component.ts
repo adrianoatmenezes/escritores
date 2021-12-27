@@ -9,7 +9,5 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'escritores';
-
-  constructor(private http: HttpClient) {}
-
+  constructor() {}
 }

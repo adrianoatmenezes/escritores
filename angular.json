@@ -76,7 +76,7 @@
               "browserTarget": "escritores:build:production"
             },
             "development": {
-              "browserTarget": "escritores:build:development"
+              "browserTarget": "escritores:build:production"
             }
           },
           "defaultConfiguration": "development"

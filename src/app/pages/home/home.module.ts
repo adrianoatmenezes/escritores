@@ -1,10 +1,10 @@
-import { MensagemComponent } from './../components/mensagem/mensagem.component';
+import { MensagemComponent } from './../../components/mensagem/mensagem.component';
 import { FormsModule } from '@angular/forms';
-import { CriarTextoModule } from '../components/criar-Texto/criar-texto.module';
-import { CriarTextoComponent } from '../components/criar-Texto/criar-texto.component';
-import { TextosComponent } from './../textos/textos.component';
+import { CriarTextoModule } from '../../components/criar-Texto/criar-texto.module';
+import { CriarTextoComponent } from '../../components/criar-Texto/criar-texto.component';
+import { TextosComponent } from './textos/textos.component';
 import { HomeComponent } from './home.component';
-import { TextosModule } from './../textos/textos.module';
+import { TextosModule } from './textos/textos.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

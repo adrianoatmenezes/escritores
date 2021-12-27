@@ -13,14 +13,30 @@ export class CriarTextoComponent implements OnInit {
   texto: any | string = '';
   autor: any | string = '';
   tipo: any | string = '';
+  code: any | string = '';
   dataPostado: any = new Date().toLocaleDateString();
+  quantidade = 29;
 
   constructor(private service: ServicesService, private router: Router) {}
 
   ngOnInit(): void {}
 
+  textoAleatorio(tamanho: any) {
+    var letras =
+      '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+    var aleatorio = '';
+    for (var i = 0; i < tamanho; i++) {
+      var rnum = Math.floor(Math.random() * letras.length);
+      aleatorio += letras.substring(rnum, rnum + 1);
+    }
+    return aleatorio;
+  }
+
   limparDados() {
-    localStorage.clear();
+    localStorage.removeItem('titulo');
+    localStorage.removeItem('texto');
+    localStorage.removeItem('autor');
+    localStorage.removeItem('tipo');
   }
 
   salvarDados() {
@@ -31,6 +47,7 @@ export class CriarTextoComponent implements OnInit {
   }
 
   carregarDados() {
+    let getCode = localStorage.getItem('code');
     let getTitulo = localStorage.getItem('titulo');
     let getTexto = localStorage.getItem('texto');
     let getAutor = localStorage.getItem('autor');
@@ -43,18 +60,34 @@ export class CriarTextoComponent implements OnInit {
   }
 
   criarTexto() {
-    if (this.titulo != '' && this.texto != '' && this.autor != '') {
+    if (this.code == null) {
+      localStorage.setItem(
+        'code',
+        (this.code = this.textoAleatorio(this.quantidade))
+      );
+    }
+    else {
+      console.log((this.code = localStorage.getItem('code')));
+    }
+
+    if (
+      this.titulo != '' &&
+      this.texto != '' &&
+      this.autor != '' &&
+      this.tipo != ''
+    ) {
       this.service
         .postText(
           this.titulo,
           this.texto,
           this.autor,
           this.tipo,
+          this.code,
           this.dataPostado
         )
         .subscribe(
           (resultado) => {
-            this.router.navigate(['home']);
+            location.reload();
           },
           (err) =>
             alert(
