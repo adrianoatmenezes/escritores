@@ -4,20 +4,22 @@ import { CriarTextoModule } from '../../components/criar-Texto/criar-texto.modul
 import { CriarTextoComponent } from '../../components/criar-Texto/criar-texto.component';
 import { TextosComponent } from './textos/textos.component';
 import { HomeComponent } from './home.component';
-import { TextosModule } from './textos/textos.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HomeRoutingModule } from './home-routing.module';
 
-
 @NgModule({
-  declarations: [HomeComponent, TextosComponent, CriarTextoComponent, MensagemComponent],
+  declarations: [
+    HomeComponent,
+    TextosComponent,
+    CriarTextoComponent,
+    MensagemComponent,
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     CriarTextoModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

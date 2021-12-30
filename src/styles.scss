@@ -1,14 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-  width: 100%  !important;
+  width: 100% !important;
   max-width: 100% !important;
 }
 
 @media screen and (max-width: 260px) {
   body {
-    width: fit-content  !important;
+    width: fit-content !important;
     max-width: fit-content !important;
     overflow-x: scroll;
   }
+}
+
+.texto {
+  word-break: break-all;
+  word-wrap: normal;
+  white-space: pre-line;
+}
+
+body::-webkit-scrollbar {
+  width: 1rem;
+  background: #e3e3e3;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: #2e2e2e;
 }

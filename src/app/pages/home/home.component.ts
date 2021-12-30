@@ -9,7 +9,7 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   resetId() {
-    let id = localStorage.removeItem('id');
+    let id = sessionStorage.removeItem('id');
     return id;
   }
 

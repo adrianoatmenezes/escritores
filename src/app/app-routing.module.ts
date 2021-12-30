@@ -15,6 +15,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'ver-mais',
+    loadChildren: () =>
+      import('./pages/ver-mais/ver-mais.module').then((m) => m.VerMaisModule),
+  },
+
+  {
     path: 'editar-texto',
     loadChildren: () =>
       import('./pages/editar-texto/editar-texto.module').then(

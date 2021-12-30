@@ -1,0 +1,30 @@
+.card-editar-texto {
+  width: 100%;
+  background: #3d3d3d;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 2rem;
+
+  label {
+    color: #f1f1f1;
+  }
+
+  .text-texto {
+    height: auto;
+  }
+
+  .col-md-6,
+  .col-md-12 {
+    margin-bottom: 15px;
+  }
+
+  .escolha {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .escolha {
+    width: 100% !important;
+  }
+}

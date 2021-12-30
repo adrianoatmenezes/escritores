@@ -7,14 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./textos.component.scss'],
 })
 export class TextosComponent implements OnInit {
-  escritores: any[] = [];
+  escritores: any = {};
   id: any;
   quantidade = 300;
 
   constructor(private service: ServicesService) {}
 
   salvaId(id: any) {
-    this.id = localStorage.setItem('id', id);
+    this.id = sessionStorage.setItem('id', id);
   }
 
   puxarTexto() {

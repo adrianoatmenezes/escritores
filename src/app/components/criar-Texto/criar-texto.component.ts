@@ -16,6 +16,7 @@ export class CriarTextoComponent implements OnInit {
   code: any | string = '';
   dataPostado: any = new Date().toLocaleDateString();
   quantidade = 29;
+  escritores: any[] = [];
 
   constructor(private service: ServicesService, private router: Router) {}
 
@@ -59,43 +60,48 @@ export class CriarTextoComponent implements OnInit {
     this.tipo = getTipo?.toString();
   }
 
+
+
   criarTexto() {
     if (this.code == null) {
       localStorage.setItem(
         'code',
         (this.code = this.textoAleatorio(this.quantidade))
       );
-    }
-    else {
-      console.log((this.code = localStorage.getItem('code')));
+    } else {
+      this.code = localStorage.getItem('code');
     }
 
-    if (
-      this.titulo != '' &&
-      this.texto != '' &&
-      this.autor != '' &&
-      this.tipo != ''
-    ) {
-      this.service
-        .postText(
-          this.titulo,
-          this.texto,
-          this.autor,
-          this.tipo,
-          this.code,
-          this.dataPostado
-        )
-        .subscribe(
-          (resultado) => {
-            location.reload();
-          },
-          (err) =>
-            alert(
-              'não foi possível criar o seu texto/poesia, tente novamente mais tarde!'
-            )
-        );
+    if (this.texto.length > 300) {
+      if (
+        this.titulo != '' &&
+        this.texto != '' &&
+        this.autor != '' &&
+        this.tipo != ''
+      ) {
+        this.service
+          .postText(
+            this.titulo,
+            this.texto,
+            this.autor,
+            this.tipo,
+            this.code,
+            this.dataPostado
+          )
+          .subscribe(
+            (resultado) => {
+              location.reload();
+            },
+            (err) =>
+              alert(
+                'não foi possível criar o seu texto/poesia, tente novamente mais tarde!'
+              )
+          );
+      } else {
+        alert('não foi possível criar o seu texto/poesia');
+      }
     } else {
-      alert('não foi possível criar o seu texto/poesia');
+      alert('O Texto tem que conter mais de 300 caracteres!');
     }
   }
 }

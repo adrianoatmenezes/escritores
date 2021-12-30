@@ -1,0 +1,20 @@
+<section class="container">
+  <div *ngFor="let escritor of escritores">
+    <div class="card card-texto justify-content-center align-items-center">
+      <div class="texto-titulo">
+        <h1>{{escritor.titulo}}</h1>
+      </div>
+      <div class="divisao"></div>
+      <div class="card-body">
+        <div class="texto">
+          {{escritor.texto}}
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="texto-footer text-secondary">
+          <span class="autor">- {{escritor.autor}}</span> <span class="data">Data criado: <span class="data-criada">{{escritor.dataPostado}}</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

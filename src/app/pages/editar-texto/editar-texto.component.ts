@@ -8,31 +8,44 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./editar-texto.component.scss'],
 })
 export class EditarTextoComponent implements OnInit {
+  constructor(private service: ServicesService, private route: Router) {}
+
   id: any;
-  textoConfig: any[] = [];
-  titulo: any | string = '';
-  texto: any | string = '';
-  autor: any | string = '';
-  tipo: any | string = '';
-  code: any | string = '';
+  escritores: any[] = [];
+  titulo: any;
+  texto: any;
+  autor: any;
+  tipo: any;
   dataPostado: any = new Date().toLocaleDateString();
-  quantidade = 29;
 
-  constructor(private service: ServicesService, private router: Router) {}
+  update() {
+    this.id = sessionStorage.getItem('id');
+    this.service
+      .updateConteudo(
+          this.id,
+          this.titulo,
+          this.texto,
+          this.autor,
+          this.tipo,
+          this.dataPostado
+      )
+      .subscribe((escritores) => {
+        this.escritores = escritores;
+      });
+  }
 
-  carregarTexto() {
-    this.id = localStorage.getItem('id');
-    this.service.puxarTextoId(parseInt(this.id)).subscribe((textoConfig) => {
-      this.textoConfig = textoConfig;
-      if (!textoConfig) {
-        this.router.navigateByUrl('home');
+  puxarTextoId() {
+    this.id = sessionStorage.getItem('id');
+    this.service.puxarTextoId(this.id).subscribe((escritores: any[]) => {
+      if (escritores.length <= 0) {
+        this.route.navigateByUrl('home');
       } else {
-        console.log(textoConfig);
+        this.escritores = escritores;
       }
     });
   }
 
   ngOnInit(): void {
-    this.carregarTexto();
+    this.puxarTextoId();
   }
 }

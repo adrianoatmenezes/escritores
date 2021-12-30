@@ -1,0 +1,28 @@
+.card-texto {
+
+  padding: 20px 20px 0;
+  margin-bottom: 20px;
+
+  .texto-titulo{
+    margin-bottom: 20px;
+  }
+
+  .divisao {
+    content: "";
+    width: 100%;
+    border-bottom: 1px solid #00000020;
+  }
+
+  .card-footer {
+    width: 100%;
+  }
+
+  .texto-footer {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+  }
+  .data-criada {
+    font-style: normal;
+  }
+}

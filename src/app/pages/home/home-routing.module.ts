@@ -11,12 +11,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: TextosComponent
+        component: TextosComponent,
       },
       {
         path: '',
-        component: CriarTextoComponent
-      }
+        component: CriarTextoComponent,
+      },
     ],
   },
 ];
