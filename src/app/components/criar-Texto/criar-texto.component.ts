@@ -35,7 +35,7 @@ export class CriarTextoComponent implements OnInit {
   }
 
   contarLinhas(texto: any) {
-    let calcTexto = texto?.length / 90 - 0.6;
+    let calcTexto = texto?.length / 50 - 0.4;
 
     console.log(calcTexto);
 
