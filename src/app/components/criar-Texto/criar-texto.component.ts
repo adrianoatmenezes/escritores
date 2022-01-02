@@ -37,9 +37,9 @@ export class CriarTextoComponent implements OnInit {
     let calcTexto;
 
     if (screen.width <= 940) {
-      calcTexto = texto.length / 10 - 0.5;
+      calcTexto = texto?.length / 10 - 0.5;
     } else {
-      calcTexto = texto.length / 85 - 0.5;
+      calcTexto = texto?.length / 85 - 0.5;
     }
 
     return calcTexto;
