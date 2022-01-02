@@ -37,9 +37,9 @@ export class CriarTextoComponent implements OnInit {
     let calcTexto;
 
     if (screen.width <= 940) {
-      calcTexto = texto?.length / 10 - 0.5;
+      calcTexto = texto?.length / 30;
     } else {
-      calcTexto = texto?.length / 85 - 0.5;
+      calcTexto = texto?.length / 83 + 0.1;
     }
 
     return calcTexto;
@@ -53,6 +53,7 @@ export class CriarTextoComponent implements OnInit {
   }
 
   salvarDados() {
+    alert('Os dados foram salvos com sucesso!');
     localStorage.setItem('titulo', this.titulo);
     localStorage.setItem('texto', this.texto);
     localStorage.setItem('autor', this.autor);
