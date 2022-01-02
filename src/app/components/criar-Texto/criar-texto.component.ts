@@ -20,8 +20,7 @@ export class CriarTextoComponent implements OnInit {
 
   constructor(private service: ServicesService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   textoAleatorio(tamanho: any) {
     var letras =
@@ -35,9 +34,13 @@ export class CriarTextoComponent implements OnInit {
   }
 
   contarLinhas(texto: any) {
-    let calcTexto = texto?.length / 50 - 0.4;
+    let calcTexto;
 
-    console.log(calcTexto);
+    if (screen.width <= 940) {
+      calcTexto = texto.length / 10 - 0.5;
+    } else {
+      calcTexto = texto.length / 85 - 0.5;
+    }
 
     return calcTexto;
   }
