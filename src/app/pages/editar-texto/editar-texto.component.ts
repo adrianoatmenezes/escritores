@@ -29,9 +29,16 @@ export class EditarTextoComponent implements OnInit {
         this.tipo,
         (this.dataPostado = new Date().toLocaleDateString())
       )
-      .subscribe((escritores) => {
-        this.escritores = escritores;
-      });
+      .subscribe(
+        (escritores) => {
+          this.escritores = escritores;
+          this.route.navigateByUrl('home');
+          alert(`O seu texto foi Editado com sucesso!`);
+        },
+        (err) => {
+          alert('Não foi possível editar o seu texto!');
+        }
+      );
   }
 
   puxarTextoId() {

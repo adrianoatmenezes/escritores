@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ServicesService } from '../../../../services/services.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -12,10 +13,14 @@ export class TextosComponent implements OnInit {
   quantidade = 300;
   textoInner: any;
 
-  constructor(private service: ServicesService) {}
+  constructor(private service: ServicesService, private route: Router) {}
 
   salvaId(id: any) {
     this.id = sessionStorage.setItem('id', id);
+  }
+
+  deletarTexto(id: number) {
+    this.service.deletarTexto(id).subscribe((escritores: any[]) => {});
   }
 
   puxarTexto() {
@@ -27,9 +32,11 @@ export class TextosComponent implements OnInit {
 
           resultado.texto =
             resultado.texto.substring(0, this.quantidade) + '...';
-        }
-        else {
-          escritores = [];
+        } else {
+          setInterval(() => {
+            this.deletarTexto(resultado.id);
+            document.location.reload();
+          }, 10);
         }
       });
     });

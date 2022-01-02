@@ -66,4 +66,9 @@ export class ServicesService {
       dataPostado: dataPostado,
     });
   }
+
+  deletarTexto(id: number): Observable<any[]> {
+    if (id == null) this.router.navigateByUrl('home');
+    return this.http.delete<any[]>(this.apiEscritores + `/escritores/${id}`);
+  }
 }
