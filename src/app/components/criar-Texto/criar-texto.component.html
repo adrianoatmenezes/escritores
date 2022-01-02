@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3 col-md-12">
               <label for="textoFormControlTextarea" class="form-label">Texto</label>
-              <textarea class="form-control" id="textoFormControlTextarea" rows="3" name="texto" [(ngModel)]="texto"
+              <textarea class="form-control" id="textoFormControlTextarea" [rows]="contarLinhas(texto)" name="texto" [(ngModel)]="texto"
                 #campoTexto="ngModel" required></textarea>
               <cp-mensagem *ngIf="campoTexto.invalid && campoTexto.touched" mensagem="* Texto obrigatório">
               </cp-mensagem>

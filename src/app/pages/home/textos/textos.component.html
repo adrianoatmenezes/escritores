@@ -6,7 +6,8 @@
     </div>
     <div class="card-texto">
       <p class="text-secondary texto-escritor">
-        {{escritor.texto}}<a class="d-block text-end" routerLink="../ver-mais/" (click)="salvaId(escritor.id)">Ver mais</a>
+        {{escritor.texto}} <span><a class="d-block text-end" routerLink="../ver-mais/"
+            (click)="salvaId(escritor.id)">Ver mais</a></span>
       </p>
       <div class="card-escritor-footer text-secondary">
         <span class="autor">- {{escritor.autor}}</span>
@@ -15,7 +16,6 @@
     </div>
   </div>
 </div>
-
 <ng-template #nenhumTexto>
   <p class="text-center mt-5" style="border: 0;">Nenhum texto/poesia foram encontrados</p>
 </ng-template>

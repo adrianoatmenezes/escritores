@@ -20,7 +20,8 @@ export class CriarTextoComponent implements OnInit {
 
   constructor(private service: ServicesService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   textoAleatorio(tamanho: any) {
     var letras =
@@ -31,6 +32,14 @@ export class CriarTextoComponent implements OnInit {
       aleatorio += letras.substring(rnum, rnum + 1);
     }
     return aleatorio;
+  }
+
+  contarLinhas(texto: any) {
+    let calcTexto = texto?.length / 90 - 0.6;
+
+    console.log(calcTexto);
+
+    return calcTexto;
   }
 
   limparDados() {
@@ -48,7 +57,6 @@ export class CriarTextoComponent implements OnInit {
   }
 
   carregarDados() {
-    let getCode = localStorage.getItem('code');
     let getTitulo = localStorage.getItem('titulo');
     let getTexto = localStorage.getItem('texto');
     let getAutor = localStorage.getItem('autor');
@@ -59,8 +67,6 @@ export class CriarTextoComponent implements OnInit {
     this.autor = getAutor?.toString();
     this.tipo = getTipo?.toString();
   }
-
-
 
   criarTexto() {
     if (this.code == null) {

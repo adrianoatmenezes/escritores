@@ -10,6 +10,7 @@ export class TextosComponent implements OnInit {
   escritores: any = {};
   id: any;
   quantidade = 300;
+  textoInner: any;
 
   constructor(private service: ServicesService) {}
 
@@ -22,8 +23,13 @@ export class TextosComponent implements OnInit {
       this.escritores = escritores;
       escritores.forEach((resultado) => {
         if (resultado.texto.length > this.quantidade) {
+          var verMais = document.getElementById('verMais');
+
           resultado.texto =
             resultado.texto.substring(0, this.quantidade) + '...';
+        }
+        else {
+          escritores = [];
         }
       });
     });

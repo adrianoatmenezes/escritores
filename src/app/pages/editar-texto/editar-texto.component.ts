@@ -16,18 +16,18 @@ export class EditarTextoComponent implements OnInit {
   texto: any;
   autor: any;
   tipo: any;
-  dataPostado: any = new Date().toLocaleDateString();
+  dataPostado: any;
 
   update() {
     this.id = sessionStorage.getItem('id');
     this.service
       .updateConteudo(
-          this.id,
-          this.titulo,
-          this.texto,
-          this.autor,
-          this.tipo,
-          this.dataPostado
+        this.id,
+        this.titulo,
+        this.texto,
+        this.autor,
+        this.tipo,
+        (this.dataPostado = new Date().toLocaleDateString())
       )
       .subscribe((escritores) => {
         this.escritores = escritores;
@@ -36,13 +36,24 @@ export class EditarTextoComponent implements OnInit {
 
   puxarTextoId() {
     this.id = sessionStorage.getItem('id');
-    this.service.puxarTextoId(this.id).subscribe((escritores: any[]) => {
-      if (escritores.length <= 0) {
-        this.route.navigateByUrl('home');
-      } else {
-        this.escritores = escritores;
-      }
-    });
+    if (this.id == null) {
+      this.route.navigateByUrl('home');
+    } else {
+      this.service.puxarTextoId(this.id).subscribe((escritores: any[]) => {
+        if (escritores.length <= 0) {
+          this.route.navigateByUrl('home');
+        } else {
+          escritores.forEach((resultado) => {
+            this.titulo = resultado.titulo;
+            this.autor = resultado.titulo;
+            this.texto = resultado.texto;
+            this.tipo = resultado.tipo;
+            this.dataPostado = resultado.dataPostado;
+          });
+          this.escritores = escritores;
+        }
+      });
+    }
   }
 
   ngOnInit(): void {
