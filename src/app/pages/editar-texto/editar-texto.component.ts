@@ -16,6 +16,7 @@ export class EditarTextoComponent implements OnInit {
   texto: any;
   autor: any;
   tipo: any;
+  code: any;
   dataPostado: any;
 
   update() {
@@ -43,6 +44,7 @@ export class EditarTextoComponent implements OnInit {
 
   puxarTextoId() {
     this.id = sessionStorage.getItem('id');
+    let codigo = localStorage.getItem('code');
     if (this.id == null) {
       this.route.navigateByUrl('home');
     } else {
@@ -52,7 +54,7 @@ export class EditarTextoComponent implements OnInit {
         } else {
           escritores.forEach((resultado) => {
             this.titulo = resultado.titulo;
-            this.autor = resultado.titulo;
+            this.autor = resultado.autor;
             this.texto = resultado.texto;
             this.tipo = resultado.tipo;
             this.dataPostado = resultado.dataPostado;

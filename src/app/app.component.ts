@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'es-root',
@@ -9,5 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'escritores';
+
   constructor() {}
+
 }

@@ -4,7 +4,7 @@
 }
 
 .texto-menu {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
@@ -16,24 +16,103 @@
 }
 
 .itens {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
-  transition: .3s;
+  transition: 0.3s;
   text-align: center;
+  display: inline-block;
 }
 
 .itens:hover {
-    color: #1cd4e9;
+  color: #1cd4e9 !important;
 }
 
 .itens.active {
-    color: #1cd4e9;
+  color: #1cd4e9 !important;
+}
+
+.btn-sair {
+  background: darkred;
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  border: 0;
+  border-radius: 10px;
+  position: relative;
+  right: 30px;
+  top: 20px;
+  transition: 0.3s ease-out;
+}
+
+.nohover:hover {
+  color: #fff !important;
+  cursor: context-menu;
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn-sair:hover {
+  background: #9e0000;
+  color: rgb(185, 185, 185);
 }
 
 @media screen and (max-width: 991px) {
   .navbar-nav {
-    margin-top: 20px;
+    margin-top: 20px !important;
+  }
+
+  .btn-sair {
+    right: 0px;
+    top: 0px;
+    margin-left: 10px;
   }
 }

@@ -1,24 +1,22 @@
-import { LoginComponent } from './../../pages/login/login.component';
 import { Router } from '@angular/router';
 import { ServicesService } from './../../../services/services.service';
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
-  selector: 'cp-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  selector: 'es-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class LoginComponent implements OnInit {
   constructor(private service: ServicesService, private route: Router) {}
 
-  usuarios: any = [];
+  usuario: any = [];
   id: any;
   code: any;
-  nome: any;
   admin: number = 2;
   email: any;
   senha: any;
-  logado: boolean = false;
 
   getUserId() {
     const objeto =
@@ -34,14 +32,13 @@ export class NavbarComponent implements OnInit {
       } else {
         this.service.puxarUsuarioId(this.id).subscribe((usuarios: any[]) => {
           if (usuarios.length <= 0) {
+            localStorage.removeItem('user');
             this.route.navigateByUrl('home');
           } else {
-            this.logado = true;
-            localStorage.setItem('logado', JSON.stringify(this.logado));
-            if (this.logado) {
-              this.usuarios = usuarios;
-              this.nome = this.usuarios.nome;
-              this.code = this.usuarios.code;
+            this.usuario = usuarios;
+            this.code = localStorage.setItem('code', this.usuario.code);
+            if (this.usuario.tipoUser == this.admin) {
+              localStorage.setItem('admin', this.usuario.tipoUser);
             }
           }
         });
@@ -49,12 +46,19 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  sair() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('admin');
-    localStorage.removeItem('logado');
-    localStorage.removeItem('code');
-    location.reload();
+  login() {
+    this.service.verificarLogin(this.email, this.senha).subscribe(
+      (usuarios: any[]) => {
+        this.usuario = usuarios;
+        if (usuarios.length > 0) {
+          localStorage.setItem('user', JSON.stringify(usuarios));
+          location.reload();
+        }
+      },
+      (err) => {
+        alert(err);
+      }
+    );
   }
 
   ngOnInit(): void {

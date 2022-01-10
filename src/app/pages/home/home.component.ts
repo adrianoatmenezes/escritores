@@ -6,14 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
   constructor() {}
 
-  resetId() {
+  reset() {
     let id = sessionStorage.removeItem('id');
+
     return id;
   }
 
   ngOnInit(): void {
-    this.resetId();
+    this.reset();
   }
 }

@@ -3,6 +3,8 @@
   <div class="card-escritor" *ngFor="let escritor of escritores">
     <div class="card-cabecalho">
       <h2 class="titulo-escritor text-center">{{escritor.titulo}}</h2>
+      <button class="btn btn-primary" *ngIf="codeUser == code; else naoPodeEditar"
+        routerLink="../editar-texto/" (click)="salvaId(escritor.id)">Editar</button>
     </div>
     <div class="card-texto">
       <p class="text-secondary texto-escritor">
@@ -18,4 +20,8 @@
 </div>
 <ng-template #nenhumTexto>
   <p class="text-center mt-5" style="border: 0;">Nenhum texto/poesia foram encontrados</p>
+</ng-template>
+
+<ng-template #naoPodeEditar>
+
 </ng-template>

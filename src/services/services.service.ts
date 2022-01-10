@@ -7,16 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ServicesService {
-  apiEscritores = 'http://localhost:3000';
-
-  objeto = {
-    titulo: '',
-    texto: '',
-    autor: '',
-    tipo: '',
-    code: '',
-    dataPostado: '',
-  };
+  api = 'http://localhost:3000';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -25,26 +16,24 @@ export class ServicesService {
     texto: string,
     autor: string,
     tipo: string,
-    code: string,
     dataPostado: any
   ): Observable<any> {
-    return this.http.post(this.apiEscritores + '/escritores', {
+    return this.http.post(this.api + '/escritores', {
       titulo: titulo,
       texto: texto,
       autor: autor,
       tipo: tipo,
-      code: code,
       dataPostado: dataPostado,
     });
   }
 
   puxarTexto(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiEscritores + '/escritores');
+    return this.http.get<any[]>(this.api + '/escritores');
   }
 
   puxarTextoId(id: number): Observable<any[]> {
     if (id == null) this.router.navigateByUrl('home');
-    return this.http.get<any[]>(this.apiEscritores + `/escritores/${id}`);
+    return this.http.get<any[]>(this.api + `/escritores/${id}`);
   }
 
   updateConteudo(
@@ -58,7 +47,7 @@ export class ServicesService {
     if (id == null) {
       this.router.navigateByUrl('home');
     }
-    return this.http.patch<any[]>(this.apiEscritores + `/escritores/${id}`, {
+    return this.http.patch<any[]>(this.api + `/escritores/${id}`, {
       titulo: titulo,
       texto: texto,
       autor: autor,
@@ -69,6 +58,22 @@ export class ServicesService {
 
   deletarTexto(id: number): Observable<any[]> {
     if (id == null) this.router.navigateByUrl('home');
-    return this.http.delete<any[]>(this.apiEscritores + `/escritores/${id}`);
+    return this.http.delete<any[]>(this.api + `/escritores/${id}`);
+  }
+
+  puxarUsuario(): Observable<any[]> {
+    return this.http.get<any[]>(this.api + `/user`);
+  }
+
+  puxarUsuarioId(id: number): Observable<any[]> {
+    if (id == null) this.router.navigateByUrl('home');
+    return this.http.get<any[]>(this.api + `/user/${id}`);
+  }
+
+  verificarLogin(email: any, senha: any): Observable<any[]> {
+    return this.http.post<any[]>(this.api + '/user', {
+      email: email,
+      senha: senha,
+    });
   }
 }

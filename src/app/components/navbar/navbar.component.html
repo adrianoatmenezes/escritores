@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-site">
   <div class="container">
     <a class="navbar-brand texto-menu" href="#">Escritores</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span><img src="../../../assets/imgs/hamburger_button_menu_icon_155296.png" alt="btnHamburger" width="35px"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span><img src="../../../assets/imgs/hamburger_button_menu_icon_155296.png" alt="btnHamburger"
+          width="35px"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
@@ -15,7 +17,19 @@
         <li class="nav-item">
           <a class="itens" href="#">Sobre</a>
         </li>
+
+        <li class="nav-item">
+          <es-login class="itens" *ngIf="!nome && !logado; else naoPodeEditar"></es-login>
+          <span *ngIf="nome && logado; else naoPodeEditar">
+            <a class="itens nohover" href="#">Olá {{nome}}!</a>
+            <button class="btn-sair" (click)="sair()">sair</button>
+          </span>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<ng-template #naoPodeEditar>
+
+</ng-template>

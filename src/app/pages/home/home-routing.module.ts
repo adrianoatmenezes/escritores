@@ -1,3 +1,4 @@
+import { LoginComponent } from './../login/login.component';
 import { CriarTextoComponent } from '../../components/criar-Texto/criar-texto.component';
 import { TextosComponent } from './textos/textos.component';
 import { HomeComponent } from './home.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: '',
         component: CriarTextoComponent,
+      },
+      {
+        path: '',
+        component: LoginComponent,
       },
     ],
   },

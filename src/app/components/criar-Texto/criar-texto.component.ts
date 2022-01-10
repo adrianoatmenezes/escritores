@@ -1,6 +1,6 @@
+import { NavbarComponent } from './../navbar/navbar.component';
 import { ServicesService } from './../../../services/services.service';
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,21 +17,24 @@ export class CriarTextoComponent implements OnInit {
   dataPostado: any = new Date().toLocaleDateString();
   quantidade = 29;
   escritores: any[] = [];
+  logado: any = false;
 
   constructor(private service: ServicesService, private router: Router) {}
 
-  ngOnInit(): void {}
-
-  textoAleatorio(tamanho: any) {
-    var letras =
-      '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
-    var aleatorio = '';
-    for (var i = 0; i < tamanho; i++) {
-      var rnum = Math.floor(Math.random() * letras.length);
-      aleatorio += letras.substring(rnum, rnum + 1);
-    }
-    return aleatorio;
+  ngOnInit(): void {
+    this.logado = localStorage.getItem('logado');
   }
+
+  // textoAleatorio(tamanho: any) {
+  //   var letras =
+  //     '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+  //   var aleatorio = '';
+  //   for (var i = 0; i < tamanho; i++) {
+  //     var rnum = Math.floor(Math.random() * letras.length);
+  //     aleatorio += letras.substring(rnum, rnum + 1);
+  //   }
+  //   return aleatorio;
+  // }
 
   contarLinhas(texto: any) {
     let calcTexto;
@@ -50,6 +53,10 @@ export class CriarTextoComponent implements OnInit {
     localStorage.removeItem('texto');
     localStorage.removeItem('autor');
     localStorage.removeItem('tipo');
+    this.titulo = '';
+    this.texto = '';
+    this.autor = '';
+    this.tipo = '';
   }
 
   salvarDados() {
@@ -73,15 +80,6 @@ export class CriarTextoComponent implements OnInit {
   }
 
   criarTexto() {
-    if (this.code == null) {
-      localStorage.setItem(
-        'code',
-        (this.code = this.textoAleatorio(this.quantidade))
-      );
-    } else {
-      this.code = localStorage.getItem('code');
-    }
-
     if (this.texto.length > 300) {
       if (
         this.titulo != '' &&
@@ -95,12 +93,12 @@ export class CriarTextoComponent implements OnInit {
             this.texto,
             this.autor,
             this.tipo,
-            this.code,
             this.dataPostado
           )
           .subscribe(
             (resultado) => {
               location.reload();
+              this.limparDados();
             },
             (err) =>
               alert(

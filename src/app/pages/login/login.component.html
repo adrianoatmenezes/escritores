@@ -1,0 +1,39 @@
+<section>
+  <!-- Button trigger modal -->
+  <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Login
+  </a>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="text-end p-3">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1 class="mb-5">ESCRITORES</h1>
+          <div class="modal-input">
+            <form (ngSubmit)="login()">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <span class="fa fa-envelope envelope-email"></span><input type="email" class="form-control" id="email"
+                  placeholder="name@example.com" required [(ngModel)]="email" name="email">
+              </div>
+              <div class="mb-5">
+                <label for="senha" class="form-label">Senha</label>
+                <span class="fa fa-lock cadeado"></span><input type="password" class="form-control" id="senha" required [(ngModel)]="senha" name="senha">
+              </div>
+              <div class="mb-5">
+                <button type="submit" class="btn btn-primary w-100 text-center">Login</button>
+              </div>
+              <div class="mb-5">
+                <p class="text-center text-secondary">Ainda não tem uma conta? <a href="">Crie uma!</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
